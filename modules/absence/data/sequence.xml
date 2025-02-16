@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+<record id="seq_employee_absence" model="ir.sequence">
+    <field name="name">Employee Absence Sequence</field>
+    <field name="code">employee.absence.sequence</field>
+    <field name="prefix">ABS</field>
+    <field name="padding">4</field>
+    <field name="number_next">1</field>
+    <field name="number_increment">1</field>
+</record>
+</odoo>

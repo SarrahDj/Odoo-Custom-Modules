@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+        <act_window id="action_agence_locataire"
+        name="Les Locataires"
+        res_model="agence.locataire"
+        view_mode="tree,form" />
+        <menuitem id="menu_agence_locataire"
+        name="Locataires "
+        action="action_agence_locataire"
+        parent="location_app.menu_agence" />
+</odoo>

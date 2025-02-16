@@ -1,0 +1,66 @@
+<odoo>
+  <record id="view_avenant_form" model="ir.ui.view">
+        <field name="name">avenant.form</field>
+        <field name="model">avenant.model</field>
+        <field name="arch" type="xml">
+            <form string="Avenant">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                </header>
+                <sheet>
+                     <h1>
+                            <field name="avenant_id" readonly="1"/>
+                        </h1>
+                    <group>
+                        <group>
+                            <field name="order_id" string="Bon de commande"/>
+                            <field name="client_id" string="Client"/>
+                            <field name="address" string="Adresse" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date" string="Date" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Lignes de l'avenant">
+                            <field name="avenant_line_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id" string="Article"/>
+                                    <field name="description" string="Description"/>
+                                    <field name="quantity" string="Quantité"/>
+                                    <field name="price_unit" string="Prix Unitaire"/>
+                                    <field name="tax_id" string="Taxes"/>
+                                    <field name="subtotal" string="Sous-total" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_avenant_tree" model="ir.ui.view">
+        <field name="name">avenant.tree</field>
+        <field name="model">avenant.model</field>
+        <field name="arch" type="xml">
+            <tree string="Avenants">
+                <field name="avenant_id"/>
+                <field name="order_id"/>
+                <field name="client_id"/>
+                <field name="date"/>
+                <field name="total_price" />
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_avenant" model="ir.actions.act_window">
+        <field name="name">Avenants</field>
+        <field name="res_model">avenant.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+
+</odoo>

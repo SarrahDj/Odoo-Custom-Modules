@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_avenant_model_user,access.avenant.model.user,model_avenant_model,,1,1,1,1
+access_avenant_line_user,access_avenant_line_user,model_avenant_line,,1,1,1,1

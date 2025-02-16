@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_form_salle_extend" model="ir.ui.view">
+        <field name="name"> Salle : Ajouter Suface </field>
+        <field name="model">agence.salle</field>
+        <field name="inherit_id" ref="location_app.view_form_salle"/>
+        <field name="arch" type="xml">
+            <field name="isactif" position="after">
+            <field name="surface" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_tree_salle_extend" model="ir.ui.view">
+        <field name="name"> Salle : Ajouter Suface </field>
+        <field name="model">agence.salle</field>
+        <field name="inherit_id" ref="location_app.view_tree_salle"/>
+        <field name="arch" type="xml">
+            <field name="isactif" position="before">
+            <field name="surface" />
+            </field>
+        </field>
+    </record>
+</odoo>

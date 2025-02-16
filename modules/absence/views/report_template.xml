@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Report Action Definition -->
+    <report
+        id="report_employee_absence_pdf"
+        string="Employee Absence Report"
+        model="employee.absence"
+        report_type="qweb-pdf"
+        name="absence.report_employee_absence_pdf"
+        file="absence.report_employee_absence_pdf"
+        print_report_name="'Employee Absence Report - %s' % (object.name)"
+    />
+
+    <!-- Report Template Definition -->
+    <template id="report_employee_absence_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Employee Absence Request</h2>
+                    <p><strong>Name:</strong> <span t-field="doc.name"/></p>
+                    <p><strong>Employee:</strong> <span t-field="doc.employee_id.name"/></p>
+                    <p><strong>Service:</strong> <span t-field="doc.service_id.name"/></p>
+                    <p><strong>Grade:</strong> <span t-field="doc.grade_id.name"/></p>
+                    <p><strong>Reason:</strong> <span t-field="doc.reason"/></p>
+                    <p><strong>Start Date:</strong> <span t-field="doc.start_date"/></p>
+                    <p><strong>End Date:</strong> <span t-field="doc.end_date"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

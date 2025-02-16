@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Définition de la Vue Formulaire de la salle   -->
+ <record id="view_form_salle" model="ir.ui.view">
+     <field name="name">Formulaire des Salles </field>
+     <field name="model">agence.salle</field>
+     <field name="arch" type="xml">
+        <form string="Salle">
+     <header>
+          <button name="check_typesalle" type="object"
+           string="Afficher le type de salle " />
+    </header>
+   <sheet>
+       <group>
+           <field name="name" />
+           <field name="isactif" />
+           <field name="nbplaces" />
+           <field name="prix_location" />
+           <field name="description"  />
+       </group>
+   </sheet>
+</form>
+     </field>
+ </record>
+<!-- Définition de la Vue Formulaire du Bureau    -->
+ <record id="view_form_bureau" model="ir.ui.view">
+     <field name="name">Formulaire des Bureaux  </field>
+     <field name="model">agence.bureau</field>
+     <field name="arch" type="xml">
+         <form string="Bureau">
+    <sheet>
+       <group>
+           <field name="name" />
+           <field name="isactif" />
+           <field name="surface" />
+           <field name="prix_location" />
+           <field name="description"  />
+       </group>
+    </sheet>
+</form>
+     </field>
+ </record>
+
+    <!-- Définition de la Vue Liste  du modèle Salle   -->
+ <record id="view_tree_salle" model="ir.ui.view">
+            <field name="name">Liste des Salles </field>
+            <field name="model">agence.salle</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="isactif" />
+                    <field name="nbplaces" />
+                    <field name="prix_location" />
+                    <field name="description"  />
+                </tree>
+            </field>
+</record>
+    <!-- Définition de la Vue Liste  du  modèle Bureau    -->
+ <record id="view_tree_bureau" model="ir.ui.view">
+            <field name="name">Liste des Bureaux </field>
+            <field name="model">agence.bureau</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="isactif" />
+                    <field name="surface" />
+                    <field name="prix_location" />
+                    <field name="description"  />
+                </tree>
+            </field>
+</record>
+
+    <!-- Définition de la Vue Recherche du modèle Salle   -->
+ <record id="view_search_salle" model="ir.ui.view">
+    <field name="name">Filtrage des Salles </field>
+    <field name="model">agence.salle</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="name" />
+            <filter name="filter_inactive"
+                string="Inactive"
+                domain="[('isactif','=',True)]"
+            />
+            <filter name="filter_active"
+                    string="Active"
+                domain="[('isactif','=',False)]"
+            />
+        </search>
+    </field>
+</record>
+    <!-- Définition de la Vue Recherche du modèle Bureau   -->
+ <record id="view_search_bureau" model="ir.ui.view">
+    <field name="name">Filtrage des Bureaux  </field>
+    <field name="model">agence.bureau</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="name" />
+            <filter name="filter_inactive"
+                string="Inactive"
+                domain="[('isactif','=',False)]"
+            />
+            <filter name="filter_active"
+                    string="Active"
+                domain="[('isactif','=',True)]"
+            />
+        </search>
+    </field>
+</record>
+</odoo>
+

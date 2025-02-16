@@ -1,0 +1,65 @@
+<odoo>
+    <!-- Héritage de la vue sale.order.form pour ajouter l'adresse du client et le total poids -->
+<record id="view_order_form_patch" model="ir.ui.view">
+    <field name="name">sale.order.form.patch</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <!-- Ajouter l'adresse du client sous le champ client -->
+        <xpath expr="//field[@name='partner_id']" position="after">
+            <field name="customer_address" readonly="1"/>
+        </xpath>
+        <!-- Ajouter le champ Total Poids sous le tableau des lignes de commande -->
+        <xpath expr="//field[@name='amount_total']" position="before">
+            <field name="total_weight" readonly="1"/>
+        </xpath>
+
+         <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+                <field name="weight"/>
+                <field name="thick"/>
+                <field name="high"/>
+                <field name="wide"/>
+
+            </xpath>
+    </field>
+</record>
+
+        <!-- Inherit the product.product quick creation form -->
+    <record id="view_product_form_quick_create_patch" model="ir.ui.view">
+        <field name="name">product.product.quick.create.patch</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Add fields after the product category (categ_id) in the quick creation form -->
+            <xpath expr="//field[@name='categ_id']" position="after">
+
+                    <field name="product_weight"/>
+                    <field name="thickness"/>
+                    <field name="height"/>
+                    <field name="width"/>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="view_picking_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position="before">
+                <field name="stock_weight"/>
+                <field name="thickness"/>
+                <field name="height"/>
+                <field name="width"/>
+            </xpath>
+
+             <xpath expr="//sheet/notebook" position="after">
+                <group>
+                    <field name="total_weight" readonly="1"/>
+                    <field name="general_surface" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

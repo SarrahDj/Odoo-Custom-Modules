@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Action pour ouvrir le wizard -->
+    <record id="action_sale_analysis_wizard" model="ir.actions.act_window">
+        <field name="name">Analyse des Ventes</field>
+        <field name="type">ir.actions.act_window</field>
+
+        <field name="res_model">sale.analysis.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu pour le wizard dans le menu Analyse -->
+    <menuitem id="sale_analysis_menu" name="Analyse des Ventes" parent="sale.menu_sale_report" action="action_sale_analysis_wizard"/>
+</odoo>

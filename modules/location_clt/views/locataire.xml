@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_form_locataire" model="ir.ui.view">
+        <field name="name">Les locataire (reste en premier) </field>
+        <field name="model">agence.locataire</field>
+        <field name="arch" type="xml">
+            <form>
+            <group>
+                <field name="name" />
+                <field name="email" />
+                <field name="website" />
+                <field name="street" />
+                <field name="code_locataire" />
+            </group>
+            </form>
+        </field>
+    </record>
+    <record id="view_tree_member" model="ir.ui.view">
+        <field name="name">gestion des locataires </field>
+        <field name="model">agence.locataire</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="name" />
+            <field name="code_locataire" />
+        </tree>
+</field>
+</record>
+</odoo>

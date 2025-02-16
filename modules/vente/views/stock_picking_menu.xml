@@ -1,0 +1,15 @@
+<odoo>
+    <!-- Menu -->
+    <menuitem id="menu_stock_analysis" name="Analyse des surfaces"  parent="stock.menu_stock_root"/>
+
+    <!-- Action -->
+    <record id="action_stock_analysis_wizard" model="ir.actions.act_window">
+        <field name="name">Analyse des surfaces</field>
+        <field name="res_model">surface.analysis.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Attach the action to the menu -->
+    <menuitem id="menu_stock_analysis_main" name="Analyse des surfaces" parent="menu_stock_analysis" action="action_stock_analysis_wizard"/>
+</odoo>

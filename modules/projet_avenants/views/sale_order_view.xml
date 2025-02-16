@@ -1,0 +1,53 @@
+
+ <odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//header" position="inside">
+                    <button name="action_create_avenant" string="Ajouter un avenant" class="oe_stat_button" type="object" attrs="{'invisible': [('state', '!=', 'sale')]}"/>
+                </xpath>
+
+                <xpath expr="//button[@name='action_view_invoice']" position="after">
+                    <button name="%(action_avenant)d" string="Avenants" type="action" class="oe_stat_button" icon="fa-check-square-o"/>
+                </xpath>
+
+            </data>
+        </field>
+    </record>
+
+  <record id="view_order_form_inherit_sale_stock" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.delivery.rename</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+            <field name="arch" type="xml">
+                <!-- Locate the Delivery button and change its label to Attachment -->
+                <xpath expr="//field[@name='delivery_count']" position="attributes">
+                    <attribute name="string">Attachment</attribute>
+                </xpath>
+            </field>
+        </record>
+
+     <record id="view_order_form_inherit_avenant" model="ir.ui.view">
+    <field name="name">sale.order.form.inherit.avenant</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='order_line']" position="replace">
+            <field name="combined_order_line_ids" widget="one2many_list" context="{'show_avneant': True}">
+                <tree editable="bottom">
+                    <field name="product_id"/>
+
+                    <field name="quantity"/>
+                    <field name="price_unit"/>
+                    <field name="subtotal"/>
+                </tree>
+            </field>
+        </xpath>
+    </field>
+</record>
+
+
+</odoo>

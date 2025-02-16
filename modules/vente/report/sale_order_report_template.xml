@@ -1,0 +1,41 @@
+<odoo>
+    <template id="report_sale_order_analysis">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>Analyse des Commandes</h1>
+                    <t t-if="filter_by_customer">
+                        <h2>Analyse des commandes du client <t t-esc="customer_name"/> du <t t-esc="start_date"/> au <t t-esc="end_date"/></h2>
+                    </t>
+                    <t t-if="not filter_by_customer">
+                        <h2>Analyse des commandes de <t t-esc="start_date"/> au <t t-esc="end_date"/></h2>
+                    </t>
+
+                    <table class="table table-sm mt32">
+                        <thead>
+                            <tr>
+                                <t t-if=" not filter_by_customer">
+                                    <th>Client</th>
+                                </t>
+                                <th>Date</th>
+                                <th>Montant de la commande</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="orders" t-as="order">
+                                <tr>
+                                    <t t-if="not filter_by_customer">
+                                        <td><t t-esc="order['partner_id']"/></td>
+                                    </t>
+                                    <td><t t-esc="order['date_order']"/></td> <!-- Date is already formatted -->
+                                    <td><t t-esc="order['amount_total']"/></td>
+
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_surface_analysis_wizard_form" model="ir.ui.view">
+        <field name="name">surface.analysis.wizard.form</field>
+        <field name="model">surface.analysis.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Surface Analysis">
+                <group>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </group>
+                <footer>
+                    <button string="Generate Analysis" type="object" name="action_get_analysis" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

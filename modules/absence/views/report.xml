@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report
+        id="employee_absence_report"
+        model="employee.absence"
+        string="Absence Report"
+        report_type="qweb-pdf"
+        name="absence.report_employee_absence_pdf"
+        file="absence.report_employee_absence_pdf"
+        attachment_use="False"
+    />
+</odoo>

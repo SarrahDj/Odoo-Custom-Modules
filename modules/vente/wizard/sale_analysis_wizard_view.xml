@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_sale_analysis_wizard_form" model="ir.ui.view">
+        <field name="name">sale.analysis.wizard.form</field>
+        <field name="model">sale.analysis.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Analyse des Ventes">
+                <sheet>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="filter_by_customer"/>
+                        <field name="customer_id" attrs="{'invisible': [('filter_by_customer', '=', False)]}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Analyser" type="object" name="action_analyze" class="btn-primary"/>
+                    <button string="Annuler" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
